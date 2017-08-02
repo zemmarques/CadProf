@@ -1,0 +1,10 @@
+{% if anos_letivos %}
+    <h2> Registos de Anos Letivos </h2>
+    <ul>
+    {% for al in anos_letivos %}
+        <li><a href="/registos/{{al.id}}/">{{ al.designation }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Não há registos de anos letivos.</p>
+{% endif %}

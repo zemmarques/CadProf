@@ -1,0 +1,10 @@
+{% if turmas %}
+    <h2> Turmas de {{id_AnoLetivo.designation}}</h2>
+    <ul>
+    {% for t in turmas %}
+        <li><a href="{ % url "t" t_id=t.id % }">{{ t.designation }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Não há registos de turmas.</p>
+{% endif %}
