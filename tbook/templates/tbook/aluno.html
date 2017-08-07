@@ -1,0 +1,17 @@
+{% if aluno %}
+    <h2> Caderneta do Professor </h2>
+    <h4> Turma {{turma}} de {{ano_letivo.designation}}</h4>
+    <ul>
+        <li>{{aluno.number}} - {{ aluno.name }} </li>
+        <li>{{aluno.birth_date}} - {{ aluno.get_age }} </li>
+        <li>{{ aluno.get_first_name }} - {{aluno.get_last_name}}   </li>
+        <li>{{aluno.email}} </li>
+        <li>{{aluno.tutor}}  </li>
+        <li>{{aluno.created}} </li>
+        <li>{{ aluno.modified }} </li>
+
+    </ul>
+{% else %}
+    <p>Sem dados.</p>
+{% endif %}
+    <p><a href="/"> Voltar </a></p>

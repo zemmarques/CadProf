@@ -1,0 +1,16 @@
+{% if alunos %}
+    <h2> Caderneta do Professor </h2>
+    <h4> Turma {{turma}} de {{ano_letivo.designation}}</h4>
+    <ul>
+    {% for a in alunos %}
+        <li>{{a.number}} -
+            <a href="{{a.get_absolute_url}}">
+                {{ a.name }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Turma sem alunos.</p>
+{% endif %}
+    <p><a href="/"> Voltar </a></p>

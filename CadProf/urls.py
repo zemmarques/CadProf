@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from tbook import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^registos/', include('tbook.urls')),
+
+    # as minhas urls
+    url(r'^$', views.index, name='index'),
+    url(r'^registos/', include('tbook.urls', namespace='tbook')),
 ]

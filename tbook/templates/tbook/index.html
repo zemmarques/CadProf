@@ -1,8 +1,9 @@
 {% if anos_letivos %}
-    <h2> Registos de Anos Letivos </h2>
+    <h2> Caderneta do Professor </h2>
+    <h4> Registos de Anos Letivos </h4>
     <ul>
     {% for al in anos_letivos %}
-        <li><a href="/registos/{{al.id}}/">{{ al.designation }}</a></li>
+        <li><a href="{{al.get_absolute_url}}">{{ al.designation }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

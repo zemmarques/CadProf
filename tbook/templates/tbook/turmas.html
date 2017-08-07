@@ -1,10 +1,12 @@
 {% if turmas %}
-    <h2> Turmas de {{id_AnoLetivo.designation}}</h2>
+    <h2> Caderneta do Professor </h2>
+    <h4> Turmas de {{AnoLetivo.designation}}</h4>
     <ul>
     {% for t in turmas %}
-        <li><a href="{ % url "t" t_id=t.id % }">{{ t.designation }}</a></li>
+        <li><a href="{{t.get_absolute_url}}">{{ t.designation }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>Não há registos de turmas.</p>
 {% endif %}
+    <p><a href="/"> Voltar </a></p>
