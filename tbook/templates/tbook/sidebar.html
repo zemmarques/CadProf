@@ -1,0 +1,93 @@
+{% load static %}
+
+{% block sidebar %}
+
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+    <div class="navbar nav_title" style="border: 0;">
+      <a href="/" class="site_title"><i class="fa fa-book"></i>
+          <span>CadProf-Pro!</span></a>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- menu profile quick info -->
+    <div class="profile clearfix">
+      <div class="profile_pic">
+        <img src=" {% static "prof.jpg" %}" alt="..." class="img-circle profile_img">
+      </div>
+      <div class="profile_info">
+        <span>Bem vindo,</span>
+        <h2>professor X</h2>
+      </div>
+    </div>
+    <!-- /menu profile quick info -->
+
+    <br />
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+      <div class="menu_section">
+        <h3>Separadores</h3>
+        <ul class="nav side-menu">
+
+          <li><a><i class="fa fa-briefcase"></i> Anos Letivos <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+            {% if side_bar_school_years %}
+            {% for al in side_bar_school_years %}
+                <li><a href="{{al.get_absolute_url}}">{{ al.designation }}</a></li>
+            {% endfor %}
+                <li><a href="{% url 'tbook:all_school_years' %}">Ver todos</a></li>
+            {% endif %}
+                <li><a href="#">Adicionar</a></li>
+            </ul>
+          </li>
+          {% if current_school_year %}
+          <li><a><i class="fa fa-server"></i> Turmas [{{current_school_year.designation}}]<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+            {% if school_classes_dict %}
+                {% for t in school_classes_dict %}
+                  <li><a href="{{t.get_absolute_url}}">{{ t.designation }}</a></li>
+                {% endfor %}
+            {% endif %}
+                <li><a href="#">Adicionar</a></li>
+            </ul>
+           </li>
+           {% endif %}
+           <li><a><i class="fa fa-hospital-o"></i> Escolas<span class="fa fa-chevron-down"></span></a>
+             <ul class="nav child_menu">
+            {% if not all_schools %}
+               <li><a href="{% url 'tbook:all_schools' %}">Ver todas</a></li>
+            {% endif %}
+               <li><a href="#">Adicionar</a></li>
+             </ul>
+           </li>
+
+        </ul>
+      </div>
+
+
+
+    </div>
+    <!-- /sidebar menu -->
+
+    <!-- /menu footer buttons -->
+    <div class="sidebar-footer hidden-small">
+      <a data-toggle="tooltip" data-placement="top" title="Settings">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Lock">
+        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- /menu footer buttons -->
+  </div>
+</div>
+
+{% endblock %}

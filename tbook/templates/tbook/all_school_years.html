@@ -1,0 +1,47 @@
+{% extends "tbook/base.html" %}
+
+{% block principal %}
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-6 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-briefcase"></i> Registos de</span>
+              <div class="count">Anos Letivos</div>
+              <span class="count_bottom"><i class="green">todos os Anos Letivos</i> </span>
+            </div>
+            <a class="btn btn-app" style="float: right;">
+              <i class="fa fa-briefcase"></i> adicionar Ano Letivo
+            </a>
+          </div>
+          <!-- /top tiles -->
+
+          <!-- todos os Anos Letivos -->
+          {% if all_school_years %}
+          {% for sy in all_school_years %}
+          <a href="{{sy.get_absolute_url}}">
+              <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="col-md-8 tile">
+                      <h2>{{sy.designation}}</h2>
+                      <p><i class="green">criado em: </i> {{sy.created}}</p>
+                      <p><i class="red">modificado em: </i> {{sy.modified}}</p>
+                  </div>
+                </div>
+              </div>
+          </a>
+          {% endfor %}
+          {% else %}
+            <p>sem registos</p>
+          {% endif %}
+          <!-- /todos os Anos Letivos -->
+
+          <br />
+        </div>
+        <!-- /page content -->
+
+{% endblock %}
